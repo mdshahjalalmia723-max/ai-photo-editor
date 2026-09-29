@@ -103,6 +103,9 @@ def enhance():
 
         img = Image.open(file.stream).convert('RGB')
 
+                # ছবি বড় হলে মেমোরি বাঁচানোর জন্য রিসাইজ করা
+        img.thumbnail((1024, 1024))
+
         orig_name = uuid.uuid4().hex + '_orig.jpg'
         orig_path = os.path.join(UPLOAD_FOLDER, orig_name)
         img.save(orig_path, 'JPEG', quality=92, optimize=True)
